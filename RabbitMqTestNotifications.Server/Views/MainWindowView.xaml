@@ -6,14 +6,28 @@
         xmlns:local="clr-namespace:RabbitMqTestNotifications.Server"
         xmlns:reactiveUi="http://reactiveui.net"
         xmlns:userControls="clr-namespace:RabbitMqTestNotifications.Server.UserControls"
+        xmlns:core="clr-namespace:RabbitMqTestNotifications.Core;assembly=RabbitMqTestNotifications.Core"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <userControls:MenuUserControl Grid.Row="0" x:Name="Menu"/>
         <reactiveUi:RoutedViewHost Grid.Row="1" Name="RoutedViewHost"/>
+        <ListBox Grid.Row="2" Name="Messages">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="core:MessageBase">
+                    <Grid>
+                        <TextBlock Text="Title: "/>
+                        <TextBlock Text="{Binding Title}"/>
+                        <TextBlock Text="Text:"/>
+                        <TextBlock Text="{Binding Message}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

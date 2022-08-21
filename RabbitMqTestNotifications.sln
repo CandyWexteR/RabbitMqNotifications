@@ -1,7 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMqTestNotifications.Client", "RabbitMqTestNotifications.Client\RabbitMqTestNotifications.Client.csproj", "{1CC10E94-432F-4E42-AE0F-1C1C57F9C1E9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMqTestNotifications.Server", "RabbitMqTestNotifications.Server\RabbitMqTestNotifications.Server.csproj", "{9FFF16B7-C390-402E-B53C-68D990BA4EBD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMqTestNotifications.Core", "RabbitMqTestNotifications.Core\RabbitMqTestNotifications.Core.csproj", "{DE810C85-2668-4042-8280-45DDB27CF229}"
@@ -12,10 +10,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1CC10E94-432F-4E42-AE0F-1C1C57F9C1E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CC10E94-432F-4E42-AE0F-1C1C57F9C1E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CC10E94-432F-4E42-AE0F-1C1C57F9C1E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CC10E94-432F-4E42-AE0F-1C1C57F9C1E9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9FFF16B7-C390-402E-B53C-68D990BA4EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9FFF16B7-C390-402E-B53C-68D990BA4EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FFF16B7-C390-402E-B53C-68D990BA4EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
