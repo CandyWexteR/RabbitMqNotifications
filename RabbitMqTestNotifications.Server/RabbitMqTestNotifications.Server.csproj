@@ -13,6 +13,7 @@
         <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
         <WarningLevel>4</WarningLevel>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -116,10 +117,16 @@
           <HintPath>..\packages\Microsoft.Extensions.Primitives.6.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
         </Reference>
         <Reference Include="mscorlib" />
+        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+          <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+        </Reference>
         <Reference Include="Pharmacist.Common, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\Pharmacist.Common.2.0.8\lib\net472\Pharmacist.Common.dll</HintPath>
         </Reference>
         <Reference Include="PresentationFramework.Aero" />
+        <Reference Include="RabbitMQ.Client, Version=6.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+          <HintPath>..\packages\RabbitMQ.Client.6.4.0\lib\net461\RabbitMQ.Client.dll</HintPath>
+        </Reference>
         <Reference Include="ReactiveUI, Version=18.3.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\ReactiveUI.18.3.1\lib\net472\ReactiveUI.dll</HintPath>
         </Reference>
@@ -131,6 +138,9 @@
         </Reference>
         <Reference Include="Splat, Version=14.4.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\Splat.14.4.1\lib\netstandard2.0\Splat.dll</HintPath>
+        </Reference>
+        <Reference Include="Splat.Microsoft.Extensions.DependencyInjection, Version=14.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\Splat.Microsoft.Extensions.DependencyInjection.14.4.1\lib\net462\Splat.Microsoft.Extensions.DependencyInjection.dll</HintPath>
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -180,6 +190,9 @@
         <Reference Include="System.Text.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
           <HintPath>..\packages\System.Text.Json.6.0.0\lib\net461\System.Text.Json.dll</HintPath>
         </Reference>
+        <Reference Include="System.Threading.Channels, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Threading.Channels.4.7.1\lib\net461\System.Threading.Channels.dll</HintPath>
+        </Reference>
         <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
           <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
         </Reference>
@@ -205,10 +218,19 @@
             <DependentUpon>App.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
+        <Compile Include="CustomResources\MessageTemplateSelector.cs" />
+        <Compile Include="Repositories\AppBootstrapper.cs" />
+        <Compile Include="UserControls\MenuUserControl.xaml.cs">
+          <DependentUpon>MenuUserControl.xaml</DependentUpon>
+        </Compile>
         <Compile Include="ViewModels\MainWindowViewModel.cs" />
-        <Compile Include="Views\MainWindow.xaml.cs">
-          <DependentUpon>MainWindow.xaml</DependentUpon>
+        <Compile Include="ViewModels\MessageViewModel.cs" />
+        <Compile Include="Views\MainWindowView.xaml.cs">
+          <DependentUpon>MainWindowView.xaml</DependentUpon>
           <SubType>Code</SubType>
+        </Compile>
+        <Compile Include="Views\MessageView.xaml.cs">
+          <DependentUpon>MessageView.xaml</DependentUpon>
         </Compile>
     </ItemGroup>
     <ItemGroup>
@@ -230,13 +252,21 @@
         <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Models" />
-    </ItemGroup>
-    <ItemGroup>
-      <Page Include="Views\MainWindow.xaml">
+      <Page Include="UserControls\MenuUserControl.xaml" />
+      <Page Include="Views\MainWindowView.xaml">
         <Generator>MSBuild:Compile</Generator>
         <SubType>Designer</SubType>
       </Page>
+      <Page Include="Views\MessageView.xaml" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\RabbitMqTestNotifications.Core\RabbitMqTestNotifications.Core.csproj">
+        <Project>{de810c85-2668-4042-8280-45ddb27cf229}</Project>
+        <Name>RabbitMqTestNotifications.Core</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Models" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />

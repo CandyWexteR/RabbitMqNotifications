@@ -1,0 +1,44 @@
+﻿<Window x:Class="RabbitMqTestNotifications.Server.Views.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RabbitMqTestNotifications.Server"
+        xmlns:reactiveUi="http://reactiveui.net"
+        xmlns:userControls="clr-namespace:RabbitMqTestNotifications.Server.UserControls"
+        xmlns:core="clr-namespace:RabbitMqTestNotifications.Core;assembly=RabbitMqTestNotifications.Core"
+        xmlns:customResources="clr-namespace:RabbitMqTestNotifications.Server.CustomResources">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <userControls:MenuUserControl Grid.Row="0" x:Name="Menu"/>
+        <reactiveUi:RoutedViewHost Grid.Row="1" Name="RoutedViewHost"/>
+        <ScrollViewer Grid.Row="2">
+            <ItemsControl Name="Messages" >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="core:MessageBase">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="====================================="/>
+                            <TextBlock Grid.Row="1" Text="Title: "/>
+                            <TextBlock Grid.Row="2" Text="{Binding Title}"/>
+                            <TextBlock Grid.Row="3" Text="Text:"/>
+                            <TextBlock Grid.Row="4" Text="{Binding Message}"/>
+                            <TextBlock Grid.Row="5" Text="====================================="/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>

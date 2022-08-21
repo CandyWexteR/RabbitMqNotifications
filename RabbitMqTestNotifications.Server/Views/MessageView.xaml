@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="RabbitMqTestNotifications.Server.Views.MessageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:RabbitMqTestNotifications.Server.Views"
+             xmlns:core="clr-namespace:RabbitMqTestNotifications.Core;assembly=RabbitMqTestNotifications.Core"
+             xmlns:customResources="clr-namespace:RabbitMqTestNotifications.Server.CustomResources">
+    <UserControl.Resources>
+        <DataTemplate x:Key="MessageBaseTemplate" DataType="core:MessageBase">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Тема сообщения"></TextBlock>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Title}"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Текст"></TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Message}"/>
+            </Grid>
+        </DataTemplate>
+
+        <customResources:MessageTemplateSelector x:Key="MessageTemplateSelector"
+                                                 MessageBaseTemplate="{StaticResource MessageBaseTemplate}" 
+                                                 />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Frame Grid.Row="0" Name="MessageFrame" ContentTemplateSelector="{StaticResource MessageTemplateSelector}" />
+        <Button Grid.Row="1" Content="Отправить сообщение" Name="SendMessageButton"/>
+    </Grid>
+</UserControl>
