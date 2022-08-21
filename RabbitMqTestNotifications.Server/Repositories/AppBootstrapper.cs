@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RabbitMQ.Client;
 using RabbitMqTestNotifications.Server.ViewModels;
 using RabbitMqTestNotifications.Server.Views;
 using ReactiveUI;
@@ -18,7 +19,7 @@ namespace RabbitMqTestNotifications.Server.Repositories
         }
 
         public RoutingState Router { get; }
-        
+
         public IServiceProvider Container { get; private set; }
 
         void Init()
@@ -48,6 +49,8 @@ namespace RabbitMqTestNotifications.Server.Repositories
         {
             services.AddSingleton<AppBootstrapper>();
             services.AddSingleton<IScreen, AppBootstrapper>();
+
+            services.AddSingleton<ConnectionFactory>(_ => new ConnectionFactory() { HostName = "localhost" });
             services.AddSingleton<MessageViewModel>();
             services.AddSingleton<IViewFor<MessageViewModel>, MessageView>();
             services.AddSingleton<MainWindowViewModel>();
