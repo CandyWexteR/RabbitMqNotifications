@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace RabbitMqTestNotifications.Client
+namespace RabbitMqTestNotifications.Server
 {
     /// <summary>
     /// Interaction logic for App.xaml

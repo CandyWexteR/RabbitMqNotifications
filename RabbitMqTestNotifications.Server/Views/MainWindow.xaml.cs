@@ -1,4 +1,4 @@
-﻿namespace RabbitMqTestNotifications.Client
+﻿namespace RabbitMqTestNotifications.Server.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

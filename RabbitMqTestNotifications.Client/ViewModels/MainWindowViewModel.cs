@@ -1,4 +1,4 @@
-﻿namespace RabbitMqTestNotifications.Client
+﻿namespace RabbitMqTestNotifications.Client.ViewModels
 {
     public class MainWindowViewModel
     {
