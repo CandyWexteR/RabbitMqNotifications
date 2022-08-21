@@ -1,6 +1,12 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RabbitMqTestNotifications.Server.Repositories;
+using RabbitMqTestNotifications.Server.ViewModels;
+using RabbitMqTestNotifications.Server.Views;
+using ReactiveUI;
+using Splat;
 
 namespace RabbitMqTestNotifications.Server
 {
@@ -9,20 +15,15 @@ namespace RabbitMqTestNotifications.Server
     /// </summary>
     public partial class App
     {
+        public AppBootstrapper Bootstrapper { get; protected set; }
         protected override void OnStartup(StartupEventArgs e)
         {
-            CreateHostBuilder(e.Args)
-                .Build()
-                .Run();
-        }
+            base.OnStartup(e);
+            Bootstrapper = new AppBootstrapper();
 
-        static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureServices(ConfigureServices);
-
-        private static void ConfigureServices(HostBuilderContext _, IServiceCollection services)
-        {
+            var shellview = (MainWindowView)Locator.Current.GetService(typeof(IViewFor<MainWindowViewModel>));
             
+            shellview?.Show();
         }
     }
 }

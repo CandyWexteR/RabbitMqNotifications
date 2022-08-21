@@ -132,6 +132,9 @@
         <Reference Include="Splat, Version=14.4.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\Splat.14.4.1\lib\netstandard2.0\Splat.dll</HintPath>
         </Reference>
+        <Reference Include="Splat.Microsoft.Extensions.DependencyInjection, Version=14.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\Splat.Microsoft.Extensions.DependencyInjection.14.4.1\lib\net462\Splat.Microsoft.Extensions.DependencyInjection.dll</HintPath>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
           <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -205,9 +208,10 @@
             <DependentUpon>App.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
+        <Compile Include="Repositories\AppBootstrapper.cs" />
         <Compile Include="ViewModels\MainWindowViewModel.cs" />
-        <Compile Include="Views\MainWindow.xaml.cs">
-          <DependentUpon>MainWindow.xaml</DependentUpon>
+        <Compile Include="Views\MainWindowView.xaml.cs">
+          <DependentUpon>MainWindowView.xaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
     </ItemGroup>
@@ -233,7 +237,7 @@
       <Folder Include="Models" />
     </ItemGroup>
     <ItemGroup>
-      <Page Include="Views\MainWindow.xaml">
+      <Page Include="Views\MainWindowView.xaml">
         <Generator>MSBuild:Compile</Generator>
         <SubType>Designer</SubType>
       </Page>
