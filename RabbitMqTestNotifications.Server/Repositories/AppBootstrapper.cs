@@ -48,6 +48,8 @@ namespace RabbitMqTestNotifications.Server.Repositories
         {
             services.AddSingleton<AppBootstrapper>();
             services.AddSingleton<IScreen, AppBootstrapper>();
+            services.AddSingleton<MessageViewModel>();
+            services.AddSingleton<IViewFor<MessageViewModel>, MessageView>();
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<IViewFor<MainWindowViewModel>, MainWindowView>();
         }

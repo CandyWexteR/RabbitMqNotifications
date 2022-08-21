@@ -5,7 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RabbitMqTestNotifications.Server"
         xmlns:reactiveUi="http://reactiveui.net"
+        xmlns:userControls="clr-namespace:RabbitMqTestNotifications.Server.UserControls"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <reactiveUi:RoutedViewHost Name="RoutedViewHost"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <userControls:MenuUserControl Grid.Row="0" x:Name="Menu"/>
+        <reactiveUi:RoutedViewHost Grid.Row="1" Name="RoutedViewHost"/>
+    </Grid>
 </Window>

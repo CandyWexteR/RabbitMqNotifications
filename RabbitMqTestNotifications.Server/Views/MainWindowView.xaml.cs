@@ -14,6 +14,8 @@ namespace RabbitMqTestNotifications.Server.Views
             InitializeComponent();
             ViewModel = viewModel;
             this.OneWayBind(ViewModel, model => model.HostScreen.Router, view => view.RoutedViewHost.Router);
+            this.BindCommand(ViewModel, model => model.NavigateToSendMessageForm,
+                view => view.Menu.SendMessageMenuItem);
         }
 
         object IViewFor.ViewModel
