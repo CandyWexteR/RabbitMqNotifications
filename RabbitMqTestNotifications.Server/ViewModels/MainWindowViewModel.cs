@@ -7,6 +7,7 @@ using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMqTestNotifications.Core;
@@ -55,7 +56,8 @@ namespace RabbitMqTestNotifications.Server.ViewModels
         private void HandleRecievedMessage(EventPattern<BasicDeliverEventArgs> args)
         {
             var message = Encoding.UTF8.GetString(args.EventArgs.Body.ToArray());
-            ;
+            var messageBase = JsonConvert.DeserializeObject<MessageBase>(message);
+            _messages.Add(messageBase);
         }
     }
 }
